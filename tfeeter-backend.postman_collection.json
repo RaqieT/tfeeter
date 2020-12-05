@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "61005d10-8fce-4e54-95fa-ea7459414072",
+		"name": "tfeeter-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE TFEET",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8090/",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "26997962-b585-4e59-9e33-3c0961820ec7",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "tfeeter-backend",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "tfeeter",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/tfeet/02d7b584-cf60-450a-b4e6-299d69c816e6",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"tfeet",
+						"02d7b584-cf60-450a-b4e6-299d69c816e6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST TFEET",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8090/",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "26997962-b585-4e59-9e33-3c0961820ec7",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "tfeeter-backend",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "tfeeter",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/tfeet",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"tfeet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET TFEET",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8090/",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "26997962-b585-4e59-9e33-3c0961820ec7",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "tfeeter-backend",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "tfeeter",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/tfeet/1c5b1626-36ec-11eb-adc1-0242ac120002",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"tfeet",
+						"1c5b1626-36ec-11eb-adc1-0242ac120002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ALL TFEET",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:8090/",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "26997962-b585-4e59-9e33-3c0961820ec7",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "tfeeter-backend",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "http://localhost:8080/auth/realms/tfeeter/protocol/openid-connect/auth",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "tfeeter",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8090/tfeet",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"tfeet"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
