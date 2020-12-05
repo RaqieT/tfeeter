@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  backend:
+      build:
+        context: tfeeter-backend
+      image: tfeeter-backend:0.0.1
+      environment:
+        - KEYCLOAK_DOMAIN_ADDRESS=http://keycloak:8080
+        - KEYCLOAK_REALM_NAME=tfeeter
+        - KEYCLOAK_CLIENT_NAME=tfeeter-backend
+        - KEYCLOAK_CLIENT_SECRET=26997962-b585-4e59-9e33-3c0961820ec7
+      volumes:
+        - tfeeter_data:/opt/app/db
+  postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: password
+  keycloak:
+      image: quay.io/keycloak/keycloak:11.0.2
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_SCHEMA: public
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
+volumes:
+  tfeeter_data:
+    driver: local
+  postgres_data:
+    driver: local
