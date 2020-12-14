@@ -1,0 +1,14 @@
+<div *ngIf="tfeet">
+  <h2>Add tweet</h2>
+  <div>
+    <label>Title:
+      <input [(ngModel)]="tfeet.title" placeholder="title"/>
+    </label><br/>
+    <label>Description:
+        <textarea [(ngModel)]="tfeet.description" placeholder="description">
+        </textarea>
+    </label>
+  </div>
+  <button (click)="goBack()">Go Back</button>
+  <button (click)="save()">Create</button>
+</div>
