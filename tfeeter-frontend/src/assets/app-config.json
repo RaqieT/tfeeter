@@ -1,0 +1,6 @@
+{
+  "appBackend": "http://localhost:8090",
+  "keycloakUrl": "http://192.168.8.20:8080/auth",
+  "keycloakClient": "tfeeter-ui",
+  "keycloakRealm": "tfeeter"
+}

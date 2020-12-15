@@ -13,9 +13,9 @@
 <ul class="heroes">
   <li *ngFor="let hero of tfeets">
     <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.author}} / {{hero.time}} / {{hero.title}}</span> {{hero.description}}
+      <span class="badge">{{hero.author}} / {{hero.date}} / {{hero.title}}</span> {{hero.description}}
     </a>
-    <div class="actions"><button class="delete" title="delete hero"
+    <div class="actions" ><button *ngIf="isAdmin" class="delete" title="delete hero"
                  (click)="delete(hero)">x</button></div>
 
   </li>

@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import pl.michalowski.tfeeter.integration.keycloak.KeycloakContextHolder;
 import pl.michalowski.tfeeter.datastore.Tfeet;
-import pl.michalowski.tfeeter.dto.TfeetDto;
 import pl.michalowski.tfeeter.datastore.TfeetRepo;
+import pl.michalowski.tfeeter.dto.TfeetDto;
+import pl.michalowski.tfeeter.integration.keycloak.KeycloakContextHolder;
 
 import java.util.List;
 import java.util.UUID;

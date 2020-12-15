@@ -6,12 +6,13 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Tfeet } from './tfeet';
 import { MessageService } from './message.service';
+import appConfig from '../assets/app-config.json';
 
 
 @Injectable({ providedIn: 'root' })
 export class TfeetService {
 
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private apiUrl = appConfig.appBackend + '/tfeet'; // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -23,16 +24,16 @@ export class TfeetService {
 
   /** GET heroes from the server */
   getTfeets(): Observable<Tfeet[]> {
-    return this.http.get<Tfeet[]>(this.heroesUrl)
+    return this.http.get<Tfeet[]>(this.apiUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')),
-        catchError(this.handleError<Tfeet[]>('getHeroes', []))
+        tap(_ => this.log('fetched tfeets')),
+        catchError(this.handleError<Tfeet[]>('getTfeets', []))
       );
   }
 
   /** GET hero by id. Return `undefined` when id not found */
-  getHeroNo404<Data>(id: number): Observable<Tfeet> {
-    const url = `${this.heroesUrl}/?id=${id}`;
+  getTfeetNo404<Data>(id: number): Observable<Tfeet> {
+    const url = `${this.apiUrl}/?id=${id}`;
     return this.http.get<Tfeet[]>(url)
       .pipe(
         map(heroes => heroes[0]), // returns a {0|1} element array
@@ -45,8 +46,8 @@ export class TfeetService {
   }
 
   /** GET hero by id. Will 404 if id not found */
-  getTfeet(id: number): Observable<Tfeet> {
-    const url = `${this.heroesUrl}/${id}`;
+  getTfeet(id: string): Observable<Tfeet> {
+    const url = `${this.apiUrl}/${id}`;
     return this.http.get<Tfeet>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Tfeet>(`getHero id=${id}`))
@@ -59,7 +60,7 @@ export class TfeetService {
       // if not search term, return empty hero array.
       return of([]);
     }
-    return this.http.get<Tfeet[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+    return this.http.get<Tfeet[]>(`${this.apiUrl}/?name=${term}`).pipe(
       tap(x => x.length ?
          this.log(`found heroes matching "${term}"`) :
          this.log(`no heroes matching "${term}"`)),
@@ -71,16 +72,16 @@ export class TfeetService {
 
   /** POST: add a new hero to the server */
   addTfeet(hero: Tfeet): Observable<Tfeet> {
-    return this.http.post<Tfeet>(this.heroesUrl, hero, this.httpOptions).pipe(
+    return this.http.post<Tfeet>(this.apiUrl, hero, this.httpOptions).pipe(
       tap((newHero: Tfeet) => this.log(`added hero w/ id=${newHero.id}`)),
       catchError(this.handleError<Tfeet>('addHero'))
     );
   }
 
   /** DELETE: delete the hero from the server */
-  deleteTfeet(hero: Tfeet | number): Observable<Tfeet> {
-    const id = typeof hero === 'number' ? hero : hero.id;
-    const url = `${this.heroesUrl}/${id}`;
+  deleteTfeet(tfeet: Tfeet | number): Observable<Tfeet> {
+    const id = typeof tfeet === 'number' ? tfeet : tfeet.id;
+    const url = `${this.apiUrl}/${id}`;
 
     return this.http.delete<Tfeet>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
@@ -88,13 +89,13 @@ export class TfeetService {
     );
   }
 
-  /** PUT: update the hero on the server */
-  updateTfeet(hero: Tfeet): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
-  }
+  // /** PUT: update the hero on the server */
+  // updateTfeet(hero: Tfeet): Observable<any> {
+  //   return this.http.put(this.apiUrl, hero, this.httpOptions).pipe(
+  //     tap(_ => this.log(`updated hero id=${hero.id}`)),
+  //     catchError(this.handleError<any>('updateHero'))
+  //   );
+  // }
 
   /**
    * Handle Http operation that failed.

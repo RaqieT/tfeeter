@@ -1,0 +1,6 @@
+{
+  "app-backend": "${APP_BACKEND}",
+  "keycloakUrl": "${KEYCLOAK_DOMAIN_ADDRESS}",
+  "keycloakClient": "${KEYCLOAK_CLIENT}",
+  "keycloakRealm": "${KEYCLOAK_REALM}"
+}

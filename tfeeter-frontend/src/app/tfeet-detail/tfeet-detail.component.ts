@@ -24,17 +24,12 @@ export class TfeetDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.heroService.getTfeet(id)
       .subscribe(tfeet => this.tfeet = tfeet);
   }
 
   goBack(): void {
     this.location.back();
-  }
-
-  save(): void {
-    this.heroService.updateTfeet(this.tfeet)
-      .subscribe(() => this.goBack());
   }
 }

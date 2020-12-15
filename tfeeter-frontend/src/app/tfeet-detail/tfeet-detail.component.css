@@ -18,6 +18,7 @@ button {
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
+  margin-right: 1em;
   cursor: pointer;
 }
 button:hover {
@@ -27,4 +28,10 @@ button:disabled {
   background-color: #eee;
   color: #ccc;
   cursor: auto;
+}
+
+.text {
+  background-color: #DDD;
+  border-radius: 4px;
+  padding: 1em;
 }

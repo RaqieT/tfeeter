@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TfeetsComponent } from './tfeets/tfeets.component';
 import { TfeetDetailComponent } from './tfeet-detail/tfeet-detail.component';
-import {TfeetAddComponent} from "./tfeet-add/tfeet-add.component";
+import { TfeetAddComponent } from './tfeet-add/tfeet-add.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tfeets', pathMatch: 'full' },

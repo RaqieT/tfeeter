@@ -1,11 +1,9 @@
 <div *ngIf="tfeet">
-  <h2>{{tfeet.title | uppercase}} Details</h2>
-  <div><span>id: </span>{{tfeet.id}}</div>
+  <h2>{{tfeet.author}} / {{tfeet.date}} / {{tfeet.title}}</h2>
   <div>
-    <label>name:
-      <input [(ngModel)]="tfeet.title" placeholder="name"/>
-    </label>
+    <p class="text">
+      {{tfeet.description}}
+    </p>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <button (click)="goBack()">Go Back</button>
 </div>

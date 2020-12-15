@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Tfeet } from '../tfeet';
 import { TfeetService } from '../tfeet.service';
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-heroes',
@@ -10,10 +11,12 @@ import { TfeetService } from '../tfeet.service';
 })
 export class TfeetsComponent implements OnInit {
   tfeets: Tfeet[];
+  isAdmin: boolean;
 
-  constructor(private tfeetService: TfeetService) { }
+  constructor(private tfeetService: TfeetService, private readonly keycloak: KeycloakService) { }
 
   ngOnInit() {
+    this.isAdmin = this.keycloak.getUserRoles().includes('ADMIN');
     this.getTfeets();
   }
 
