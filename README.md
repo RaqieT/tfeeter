@@ -6,7 +6,7 @@
 - docker-compose.yml: docker-compose configuration
 - tfeeter-backend.postman_collection.json: exported postman collection (v2.1)
 
-## Sample  install
+## Setup
 - docker-compose build
 - docker-compose up -d
 
