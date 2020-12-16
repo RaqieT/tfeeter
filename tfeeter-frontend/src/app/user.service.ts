@@ -25,7 +25,17 @@ export class UserService {
 
 
   /** POST: add a new tfeet to the server */
-  addUser(user: User): Observable<User> {
+  addUser(user: User): Observable<any> | boolean {
+    if (!user.username) {
+      this.error('username cannot be empty!');
+      return false;
+    }
+
+    if (!user.password) {
+      this.error('password cannot be empty!');
+      return false;
+    }
+
     return this.http.post<any>(this.apiUrl, user, this.httpOptions).pipe(
       tap(() => this.log(`User registered.`)),
       catchError(this.handleError<any>('addUser'))

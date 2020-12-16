@@ -29,7 +29,9 @@ export class RegisterComponent implements OnInit {
 
   save(): void {
     console.log(this.user);
-    this.userService.addUser(this.user)
-      .subscribe(() => this.goBack());
+    const possibleUser = this.userService.addUser(this.user);
+    if (typeof possibleUser !== 'boolean') {
+      possibleUser.subscribe(() => this.goBack());
+    }
   }
 }

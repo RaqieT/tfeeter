@@ -45,10 +45,13 @@ services:
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: admin
       command:
-        - -Dkeycloak.migration.action=import
+#        - -Dkeycloak.migration.action=import
+#        - -Dkeycloak.migration.provider=singleFile
+#        - -Dkeycloak.migration.strategy=IGNORE_EXISTING
+#        - -Dkeycloak.migration.file=/opt/jboss/keycloak-config.json
+        - -Dkeycloak.migration.action=export
         - -Dkeycloak.migration.provider=singleFile
-        - -Dkeycloak.migration.strategy=IGNORE_EXISTING
-        - -Dkeycloak.migration.file=/opt/jboss/keycloak-config.json
+        - -Dkeycloak.migration.file=/opt/jboss/keycloak-config-export.json
       ports:
         - 8080:8080
       depends_on:

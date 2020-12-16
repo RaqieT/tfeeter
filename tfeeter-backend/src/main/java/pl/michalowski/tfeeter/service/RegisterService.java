@@ -22,7 +22,7 @@ public class RegisterService {
     public void register(RegisterDto registerForm) {
         UserRepresentation userRepresentation = new UserRepresentation();
         userRepresentation.setUsername(registerForm.getUsername());
-
+        userRepresentation.setEnabled(true);
         CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
         credentialRepresentation.setTemporary(false);
         credentialRepresentation.setType(CredentialRepresentation.PASSWORD);

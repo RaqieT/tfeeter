@@ -7,6 +7,7 @@ import { TfeetAddComponent } from './tfeet-add/tfeet-add.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
+  { path: '', children: [] },
   { path: 'detail/:id', component: TfeetDetailComponent },
   { path: 'tfeets', component: TfeetsComponent },
   { path: 'add', component: TfeetAddComponent },

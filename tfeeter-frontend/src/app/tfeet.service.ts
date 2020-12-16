@@ -71,7 +71,7 @@ export class TfeetService {
   //////// Save methods //////////
 
   /** POST: add a new tfeet to the server */
-  addTfeet(tfeet: Tfeet): Observable<Tfeet> {
+  addTfeet(tfeet: Tfeet): Observable<any> {
     return this.http.post<any>(this.apiUrl, tfeet, this.httpOptions).pipe(
       tap(() => this.log(`Tfeet added.`)),
       catchError(this.handleError<any>('addTfeet'))
