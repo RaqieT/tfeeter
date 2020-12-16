@@ -1,8 +1,9 @@
 <h1>{{title}}</h1>
-<div *ngIf="isLoggedIn">
+<div >
   <nav>
-    <a routerLink="/tfeets">Tfeets</a>
-    <a routerLink="/add">Add tfeet</a>
+    <a *ngIf="isLoggedIn" routerLink="/tfeets">Tfeets</a>
+    <a *ngIf="isLoggedIn" routerLink="/add">Add tfeet</a>
+    <a *ngIf="!isLoggedIn" routerLink="/register">Register</a>
   </nav>
   <router-outlet></router-outlet>
 </div>
@@ -11,4 +12,3 @@
 <span class="username" *ngIf="isLoggedIn">{{userProfile?.username}}</span>
 <button *ngIf="isLoggedIn" type="button" (click)="logout()">Log out</button>
 <button *ngIf="!isLoggedIn" type="button" (click)="login()">Log in</button>
-<!--<app-messages></app-messages>-->

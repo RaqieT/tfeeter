@@ -15,7 +15,7 @@ export class TfeetDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: TfeetService,
+    private tfeetService: TfeetService,
     private location: Location
   ) {}
 
@@ -25,7 +25,7 @@ export class TfeetDetailComponent implements OnInit {
 
   getHero(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.heroService.getTfeet(id)
+    this.tfeetService.getTfeet(id)
       .subscribe(tfeet => this.tfeet = tfeet);
   }
 

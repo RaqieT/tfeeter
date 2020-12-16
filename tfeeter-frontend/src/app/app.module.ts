@@ -11,6 +11,8 @@ import { TfeetsComponent } from './tfeets/tfeets.component';
 import { TfeetAddComponent } from './tfeet-add/tfeet-add.component';
 import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
 import appConfig from '../assets/app-config.json';
+import { ToastrModule } from 'ngx-toastr';
+import {RegisterComponent} from './register/register.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -34,7 +36,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    ToastrModule.forRoot(),
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -55,7 +58,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     AppComponent,
     TfeetsComponent,
     TfeetAddComponent,
-    TfeetDetailComponent
+    TfeetDetailComponent,
+    RegisterComponent
   ],
   bootstrap: [ AppComponent ]
 })

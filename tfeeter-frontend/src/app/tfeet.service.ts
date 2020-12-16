@@ -22,78 +22,78 @@ export class TfeetService {
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  /** GET heroes from the server */
+  /** GET tfeets from the server */
   getTfeets(): Observable<Tfeet[]> {
     return this.http.get<Tfeet[]>(this.apiUrl)
       .pipe(
-        tap(_ => this.log('fetched tfeets')),
+        tap(_ => this.log('Tfeets fetched.')),
         catchError(this.handleError<Tfeet[]>('getTfeets', []))
       );
   }
 
-  /** GET hero by id. Return `undefined` when id not found */
-  getTfeetNo404<Data>(id: number): Observable<Tfeet> {
-    const url = `${this.apiUrl}/?id=${id}`;
-    return this.http.get<Tfeet[]>(url)
-      .pipe(
-        map(heroes => heroes[0]), // returns a {0|1} element array
-        tap(h => {
-          const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} hero id=${id}`);
-        }),
-        catchError(this.handleError<Tfeet>(`getHero id=${id}`))
-      );
-  }
+  // /** GET hero by id. Return `undefined` when id not found */
+  // getTfeetNo404<Data>(id: number): Observable<Tfeet> {
+  //   const url = `${this.apiUrl}/?id=${id}`;
+  //   return this.http.get<Tfeet[]>(url)
+  //     .pipe(
+  //       map(tfeets => tfeets[0]), // returns a {0|1} element array
+  //       tap(h => {
+  //         const outcome = h ? `fetched` : `did not find`;
+  //         this.log(`${outcome} hero id=${id}`);
+  //       }),
+  //       catchError(this.handleError<Tfeet>(`getTfeet id=${id}`))
+  //     );
+  // }
 
   /** GET hero by id. Will 404 if id not found */
   getTfeet(id: string): Observable<Tfeet> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Tfeet>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Tfeet>(`getHero id=${id}`))
+      tap(_ => this.log(`Loaded Tfeet: ${id}`)),
+      catchError(this.handleError<Tfeet>(`getTfeet id=${id}`))
     );
   }
 
-  /* GET heroes whose name contains search term */
-  searchHeroes(term: string): Observable<Tfeet[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    return this.http.get<Tfeet[]>(`${this.apiUrl}/?name=${term}`).pipe(
-      tap(x => x.length ?
-         this.log(`found heroes matching "${term}"`) :
-         this.log(`no heroes matching "${term}"`)),
-      catchError(this.handleError<Tfeet[]>('searchHeroes', []))
-    );
-  }
+  /* GET tfeets whose name contains search term */
+  // searchtfeetes(term: string): Observable<Tfeet[]> {
+  //   if (!term.trim()) {
+  //     // if not search term, return empty tfeet array.
+  //     return of([]);
+  //   }
+  //   return this.http.get<Tfeet[]>(`${this.apiUrl}/?name=${term}`).pipe(
+  //     tap(x => x.length ?
+  //        this.log(`found tfeetes matching "${term}"`) :
+  //        this.log(`no tfeetes matching "${term}"`)),
+  //     catchError(this.handleError<Tfeet[]>('searchtfeetes', []))
+  //   );
+  // }
 
   //////// Save methods //////////
 
-  /** POST: add a new hero to the server */
-  addTfeet(hero: Tfeet): Observable<Tfeet> {
-    return this.http.post<Tfeet>(this.apiUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Tfeet) => this.log(`added hero w/ id=${newHero.id}`)),
-      catchError(this.handleError<Tfeet>('addHero'))
+  /** POST: add a new tfeet to the server */
+  addTfeet(tfeet: Tfeet): Observable<Tfeet> {
+    return this.http.post<any>(this.apiUrl, tfeet, this.httpOptions).pipe(
+      tap(() => this.log(`Tfeet added.`)),
+      catchError(this.handleError<any>('addTfeet'))
     );
   }
 
-  /** DELETE: delete the hero from the server */
-  deleteTfeet(tfeet: Tfeet | number): Observable<Tfeet> {
-    const id = typeof tfeet === 'number' ? tfeet : tfeet.id;
+  /** DELETE: delete the tfeet from the server */
+  deleteTfeet(tfeet: Tfeet | string): Observable<Tfeet> {
+    const id = typeof tfeet === 'string' ? tfeet : tfeet.id;
     const url = `${this.apiUrl}/${id}`;
 
     return this.http.delete<Tfeet>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
-      catchError(this.handleError<Tfeet>('deleteHero'))
+      tap(_ => this.log(`Tfeet removed: ${id}`)),
+      catchError(this.handleError<Tfeet>('deleteTfeet'))
     );
   }
 
-  // /** PUT: update the hero on the server */
-  // updateTfeet(hero: Tfeet): Observable<any> {
-  //   return this.http.put(this.apiUrl, hero, this.httpOptions).pipe(
-  //     tap(_ => this.log(`updated hero id=${hero.id}`)),
-  //     catchError(this.handleError<any>('updateHero'))
+  // /** PUT: update the tfeet on the server */
+  // updateTfeet(tfeet: Tfeet): Observable<any> {
+  //   return this.http.put(this.apiUrl, tfeet, this.httpOptions).pipe(
+  //     tap(_ => this.log(`updated tfeet id=${tfeet.id}`)),
+  //     catchError(this.handleError<any>('updateTfeet'))
   //   );
   // }
 
@@ -110,15 +110,19 @@ export class TfeetService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      this.error(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a TfeetService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(message);
+  }
+
+  private error(message: string) {
+    this.messageService.error(message);
   }
 }

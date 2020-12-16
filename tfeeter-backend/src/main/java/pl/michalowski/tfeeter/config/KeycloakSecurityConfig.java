@@ -52,7 +52,12 @@ public class KeycloakSecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         super.configure(http);
         http.csrf().disable();
 
-        http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+        http.authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/register").permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated();
     }
 }

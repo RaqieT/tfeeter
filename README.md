@@ -9,3 +9,6 @@
 ## Sample  install
 - docker-compose build
 - docker-compose up -d
+
+## Warning
+- current CORS config is not for production usage!

@@ -1,0 +1,13 @@
+<div *ngIf="user">
+  <h2>Register</h2>
+  <div>
+    <label>Username:
+      <input [(ngModel)]="user.username" placeholder="title"/>
+    </label><br/>
+    <label>Password:
+        <input [(ngModel)]="user.password" type="password" placeholder="password"/>
+    </label>
+  </div>
+  <button (click)="goBack()">Go Back</button>
+  <button (click)="save()">Create</button>
+</div>
