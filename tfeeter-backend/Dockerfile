@@ -6,7 +6,7 @@ ADD src/ src
 ADD pom.xml .
 RUN mvn install
 
-FROM openjdk:11-jdk-alpine
+FROM openjdk:13-jdk-alpine
 WORKDIR /opt/app
 COPY --from=BUILD /opt/app/target/backend.jar ./
 RUN mkdir db

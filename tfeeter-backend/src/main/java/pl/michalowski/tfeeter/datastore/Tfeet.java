@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.lang.NonNull;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -19,13 +16,14 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "tfeet")
 public class Tfeet {
     @Id
     @GeneratedValue
     private UUID id;
 
     @NonNull
-    @Column(nullable = false)
+    @Column(nullable = false, name = "account_id")
     private UUID accountId;
 
     @NonNull
@@ -41,7 +39,7 @@ public class Tfeet {
     private String description;
 
     @CreationTimestamp
-    @Column(nullable = false)
+    @Column(nullable = false,  name = "created_date")
     private LocalDateTime createdDate;
 
 }

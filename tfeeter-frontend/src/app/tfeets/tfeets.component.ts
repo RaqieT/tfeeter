@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Tfeet } from '../tfeet';
 import { TfeetService } from '../tfeet.service';
-import {KeycloakService} from "keycloak-angular";
+import {KeycloakService} from 'keycloak-angular';
 
 @Component({
   selector: 'app-heroes',

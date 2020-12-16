@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.michalowski.tfeeter.dto.TfeetDto;
 import pl.michalowski.tfeeter.service.TfeetService;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.UUID;
 
