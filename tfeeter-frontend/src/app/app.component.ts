@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {KeycloakProfile} from 'keycloak-js';
 import {KeycloakService} from 'keycloak-angular';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
   public isLoggedIn = false;
   public userProfile: KeycloakProfile | null = null;
 
-  constructor(private readonly keycloak: KeycloakService) { }
+  constructor(private readonly keycloak: KeycloakService,
+              private router: Router) { }
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
@@ -29,5 +31,6 @@ export class AppComponent implements OnInit {
 
   public logout() {
     this.keycloak.logout();
+    this.router.navigate(['/']);
   }
 }
